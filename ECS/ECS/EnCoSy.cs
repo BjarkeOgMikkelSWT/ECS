@@ -1,12 +1,12 @@
 ﻿namespace ECS
 {
-    public class ECS : IECS
+    public class EnCoSy : IEnCoSy
     {
         private int _threshold;
-        private readonly TempSensor _tempSensor;
-        private readonly Heater _heater;
+        private readonly ITempSensor _tempSensor;
+        private readonly IHeater _heater;
 
-        public ECS(int thr, ITempSensor tempSensor, IHeater heater)
+        public EnCoSy(int thr, ITempSensor tempSensor, IHeater heater)
         {
             SetThreshold(thr);
             _tempSensor = tempSensor;

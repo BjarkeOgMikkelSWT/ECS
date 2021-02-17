@@ -2,16 +2,47 @@ using NUnit.Framework;
 
 namespace ECS.Test.Unit
 {
+    internal class StubHeater : IHeater
+    {
+        public bool RunSelfTest()
+        {
+            return true;
+        }
+
+        public void TurnOff()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void TurnOn()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal class StubTempSensor : ITempSensor
+    {
+        public int GetTemp()
+        {
+            return 5;
+        }
+
+        public bool RunSelfTest()
+        {
+            return true;
+        }
+    }
+
     public class Tests
     {
-        private IECS _myECS;
+        private IEnCoSy _myECS;
         private IHeater _myHeater;
         private ITempSensor _myTempSensor;
         [SetUp]
         public void Setup()
         {
-            _myHeater = new IHeater();
-            _myTempSensor = new ITempSensor();
+            _myHeater = new Heater();
+            _myTempSensor = new TempSensor();
         }
 
         [TestCase(1)]
@@ -21,7 +52,7 @@ namespace ECS.Test.Unit
         {
             //Arange
             //Action
-            _myECS = new ECS(thr, _myTempSensor, _myHeater);
+            _myECS = new EnCoSy(thr, _myTempSensor, _myHeater);
 
             //Assert
             Assert.That(_myECS.GetThreshold(),Is.EqualTo(thr));
@@ -31,7 +62,7 @@ namespace ECS.Test.Unit
         public void RunSelfTestReturnsCorrect()
         {
             //Arange
-            _myECS = new ECS(1, _myTempSensor, _myHeater);
+            _myECS = new EnCoSy(1, _myTempSensor, _myHeater);
 
             //Action
             bool ok = _myECS.RunSelfTest();

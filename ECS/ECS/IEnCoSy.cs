@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS
 {
-    public interface IECS
+    public interface IEnCoSy
     {
         public void Regulate();
 
