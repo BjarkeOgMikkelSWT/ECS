@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ECS.Legacy
+namespace ECS
 {
-    internal class TempSensor : ITempSensor
+    public class TempSensor : ITempSensor
     {
         private readonly IRandom _gen;
 

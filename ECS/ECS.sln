@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS", "ECS\ECS.csproj", "{F8F9297B-A327-400E-8036-F2A60C70A06D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS.Test.Unit", "ECS.Test.Unit\ECS.Test.Unit.csproj", "{E0288788-C73F-4A89-A7F1-140D050BC3D4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F8F9297B-A327-400E-8036-F2A60C70A06D} = {F8F9297B-A327-400E-8036-F2A60C70A06D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS
 {
-    interface IRandom
+    public interface IRandom
     {
         public int Next(int min, int max);
     }
