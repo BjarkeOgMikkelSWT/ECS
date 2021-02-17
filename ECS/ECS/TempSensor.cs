@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ECS.Legacy
+namespace ECS
 {
     internal class TempSensor
     {
