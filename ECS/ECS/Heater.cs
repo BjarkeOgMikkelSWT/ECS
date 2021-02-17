@@ -1,20 +1,24 @@
 ﻿namespace ECS
 {
-    public class Heater
+    public class Heater : IHeater
     {
+        private readonly ConsoleOutputter _outputter = new ConsoleOutputter();
+        
         public void TurnOn()
         {
-            System.Console.WriteLine("Heater is on");
+            _outputter.WriteLine("Heater is on");
         }
-
+        
         public void TurnOff()
         {
-            System.Console.WriteLine("Heater is off");
+            _outputter.WriteLine("Heater is off");
         }
 
         public bool RunSelfTest()
         {
             return true;
         }
+
+
     }
 }
