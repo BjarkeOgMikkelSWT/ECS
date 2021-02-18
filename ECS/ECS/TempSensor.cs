@@ -4,12 +4,7 @@ namespace ECS
 {
     public class TempSensor : ITempSensor
     {
-        private readonly IRandom _gen;
-
-        TempSensor(IRandom gen)
-        {
-            _gen = gen;
-        }
+        private readonly Random _gen = new Random();
 
         public int GetTemp()
         {

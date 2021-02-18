@@ -36,24 +36,53 @@ namespace ECS.Test.Unit
         {
             _heater = new Heater();
         }
-
-        [Test]
-        public void HeaterTurnOnTestWritesToConsole()
+        
+        [TestCase("Heater is on\r\n", TestName = "Expected string is printed to console")]
+        public void HeaterTurnOnTestWritesToConsoleCorrect(string expected)
         {
             using var consoleOutput = new ConsoleOutput();
+
             _heater.TurnOn();
+            Assert.AreEqual(expected, consoleOutput.GetOuput());
+        }
 
-            Assert.AreEqual("Heater is on\r\n", consoleOutput.GetOuput());
+        [TestCase("AnyOtherString")]
+        [TestCase("Another string")]
+        [TestCase("Will I fail?")]
+        public void HeaterTurnOnTestWritesOtherStringsToConsoleFails(string expected)
+        {
+            using var consoleOutput = new ConsoleOutput();
+
+            _heater.TurnOn();
+            Assert.AreNotEqual(expected, consoleOutput.GetOuput());
+        }
+
+        [TestCase("Heater is off\r\n", TestName = "Expected string is printed to console")]
+        public void HeaterTurnOffTestWritesToConsoleCorrect(string expected)
+        {
+            using var consoleOutput = new ConsoleOutput();
+
+            _heater.TurnOff();
+            Assert.AreEqual(expected, consoleOutput.GetOuput());
+        }
+
+        [TestCase("Maybe off will work")]
+        [TestCase("Another string")]
+        [TestCase("Will I fail?")]
+        public void HeaterTurnOffTestWritesOtherStringsToConsoleFails(string expected)
+        {
+            using var consoleOutput = new ConsoleOutput();
+
+            _heater.TurnOff();
+            Assert.AreNotEqual(expected, consoleOutput.GetOuput());
         }
 
         [Test]
-        public void HeaterTurnOffTestWritesToConsole()
+        public void HeaterRunSelfTestReturnsTrue()
         {
-            using var consoleOutput = new ConsoleOutput();
-            _heater.TurnOff();
-
-            Assert.AreEqual("Heater is off\r\n", consoleOutput.GetOuput());
+            Assert.IsTrue(_heater.RunSelfTest());
         }
+        
 
         [TearDown]
         public void TearDown()
