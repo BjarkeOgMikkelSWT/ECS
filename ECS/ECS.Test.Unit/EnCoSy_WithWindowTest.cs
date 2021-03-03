@@ -131,11 +131,11 @@ namespace ECS.Test.Unit
             //Assert
             if (openClose)
             {
-                dummyWindow.Received().open();
+                dummyWindow.Received(1).open();
             }
             else
             {
-                dummyWindow.Received().close();
+                dummyWindow.Received(1).close();
             }
         }
 
